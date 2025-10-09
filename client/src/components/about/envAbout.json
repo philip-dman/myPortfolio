@@ -1,0 +1,27 @@
+{
+  "aboutCard": {
+    "title": "About Me",
+    "content": "I am currently a 4th year BSIT student at La Consolacion University\nPhilippines. I am passionate about technology and love to explore new\ntrends in the tech world. I like to solve problems and find a creative\nsolution to them. I am interested in front-end development,\nautomations, and self-hosting."
+  },
+
+  "accordCard0": {
+    "title": "N8N",
+    "icon": "https://pbs.twimg.com/profile_images/1536335358803251202/-gASF0c6_400x400.png",
+    "subtitle": "a self-hosted workflow automation tool",
+    "content": "In my problem solving journey, I discovered N8N, a powerful workflow automation tool that allows me to automate tasks and integrate various services seamlessly. It has become an essential part of my toolkit."
+  },
+
+  "accordCard1": {
+    "title": "Figma",
+    "icon": "https://play-lh.googleusercontent.com/hoVBnPBRehmXsCqESLXRH2E3OTxklkwKZlb1psn7imm0VUSobn2nevS9RRFWb9GM4-o",
+    "subtitle": "a collaborative interface design tool",
+    "content": "During our web development projects, I utilize Figma to create user interface designs and prototypes. Its collaborative features allow me to work seamlessly with team members and gather feedback efficiently."
+  },
+
+  "accordCard2": {
+    "title": "Self-hosting",
+    "icon": "https://yt3.googleusercontent.com/vr50ZXiY9tM1xNgVT2cLt0sGSdL_xuvVYA0fPtzpB9-LNE32KN7bvq75Uwcz70xO-3S6Ts4zIQ=s900-c-k-c0x00ffffff-no-rj",
+    "subtitle": "lots of amazing tech tools for free",
+    "content": "Self-hosting allows me to take control of my applications and data. I can run various services on my own server, giving me the freedom to customize and optimize my setup. It's a great way to learn and experiment with new technologies. I use docker desktop to self-host my applications and services."
+  }
+}

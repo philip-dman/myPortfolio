@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "image": "assistant.png",
+    "title": "AI Assistant",
+    "content": "I created an AI assistant using N8N, Gemini LLM's, MCP server, and telegram bot API.",
+    "details": "I created an AI assistant using N8N, Gemini LLM's, MCP server, and telegram bot API. The assistant can perform various tasks such as answering questions, providing recommendations, and automating workflows. It leverages the power of Gemini LLM's for natural language understanding and generation, while N8N orchestrates the workflows and integrations with other services. The MCP server hosts the assistant, ensuring it is always available to respond to user requests via the Telegram bot API."
+  },
+  {
+    "id": 2,
+    "image": "plane.png",
+    "title": "Project Management Tool",
+    "content": "I self-hosted Plane, a project management tool for agile kanban projects using Docker.",
+    "details": "I self-hosted Plane, a project management tool for agile kanban projects using Docker. Plane provides a simple and intuitive interface for managing tasks, tracking progress, and collaborating with team members. By self-hosting it using Docker, I was able to easily deploy and manage the application on my own server, ensuring that my project data remains secure and under my control."
+
+  },
+  {
+    "id": 3,
+    "image": "safeHub.png",
+    "title": "SafeHub",
+    "content": "Our team developed SafeHub, an online booking platform.", 
+    "details": "Our team developed SafeHub, an online booking platform designed to streamline the reservation process for various services. The platform allows users to easily browse available options, make bookings, and manage their reservations. We focused on creating a user-friendly interface and ensuring a smooth user experience. SafeHub also includes features such as real-time availability updates and customer support integration."
+  },
+  {
+    "id": 4,
+    "image": "gmailAuto.png",
+    "title": "Gmail Automation",
+    "content": "I built an automatic email sorting workflow using N8N.",
+    "details": "I built an automatic email sorting workflow using N8N to help manage my Gmail inbox more efficiently. The workflow automatically categorizes incoming emails based on predefined criteria such as sender, subject, and keywords. It then moves the emails to designated folders, applies labels, and can even trigger notifications for important messages. This automation has significantly reduced the time I spend organizing my emails and has improved my overall productivity."
+  },
+  {
+    "id": 5,
+    "image": "projectReport.png",
+    "title": "Daily & Weekly Report Automation",
+    "content": "I built an AI project assistant for daily and weekly reports.",
+    "details": "I built an AI project assistant using N8N to automate the generation and distribution of daily and weekly reports based on the activity in Plane. The assistant collects data from Plane, and saves it in a database. It then uses those data to generate daily report updates. While the daily reports are saved in the database, and used for the weekly reports. The reports are sent to my email to notify me immediately. This allows me to track progress and solve potential issues in the future."
+  },
+  {
+    "id": 6,
+    "image": "githubSync.png",
+    "title": "Workflow to GitHub Repo Sync",
+    "content": "I built a worflow on N8N to sync my workflow files to GitHub repository.",
+    "details": "I built a workflow on N8N to sync my workflow files to a GitHub repository. This automation ensures that my workflows will have backups incase of emergencies, it autosaves daily on my github repository. This setup not only saves time but also reduces the risk of forgetting to update the repository after making changes."
+  },
+  {
+    "id": 7,
+    "image": "myWebsite.png",
+    "title": "This Portfolio Website",
+    "content": "I built this website using React, Tailwind CSS, and DaisyUI to showcase my work.",
+    "details": "I built this website using React, Tailwind CSS, and DaisyUI to showcase my work. The site features a modern design, responsive layout, and smooth animations to enhance the user experience. I also implemented various components to display my projects, skills, and contact information effectively."
+  },
+  {
+    "id": 8,
+    "image": "figmaProj.png",
+    "title": "Website Design in Figma",
+    "content": "I built the design prototype of most of my web projects using Figma.",
+    "details": "I built the design prototype of most of my web projects using Figma. This process involved creating wireframes, user flows, and high-fidelity mockups to visualize the final product. Figma's collaborative features allowed me to work closely with stakeholders and gather feedback throughout the design process."
+  }
+
+]
