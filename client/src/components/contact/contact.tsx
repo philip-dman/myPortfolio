@@ -3,6 +3,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { PiFacebookLogoBold } from "react-icons/pi";
 import { VscGithub } from "react-icons/vsc";
+import axios from "axios";
 
 import type { IconType } from "react-icons";
 import { useState } from "react";
@@ -11,6 +12,19 @@ export default function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:9898/contact", {
+        name,
+        email,
+        message,
+      });
+      console.log("Server response:", response.data);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
 
   return (
     <div className="flex flex-col h-full w-full p-15 gap-20" id="contacts">
@@ -62,9 +76,13 @@ export default function Contact() {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
               </svg>
-              <input type="email" placeholder="mail@site.com" value={email}
+              <input
+                type="email"
+                placeholder="mail@site.com"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required />
+                required
+              />
             </label>
             <div className="validator-hint hidden">
               Enter valid email address
@@ -81,7 +99,7 @@ export default function Contact() {
             <div className="card-actions justify-end">
               <button
                 className="btn btn-primary text-lg font-semibold"
-                onClick={() => console.log({ name, email, message })}
+                onClick={handleSubmit}
               >
                 Send Message
               </button>
@@ -101,4 +119,3 @@ function contactList(Icon: IconType, text: string) {
     </li>
   );
 }
-
