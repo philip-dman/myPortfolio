@@ -10,6 +10,7 @@ import Projects from "./components/projects/projects.tsx";
 import Contact from "./components/contact/contact.tsx";
 import Footer from "./components/footer/footer.tsx";
 import Skills from "./components/skills/skills.tsx";
+import ChatBot from "./components/chatBot/chatBot.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -23,5 +24,6 @@ createRoot(document.getElementById("root")!).render(
     {heroDivider()}
     <Contact />
     <Footer />
+    <ChatBot />
   </StrictMode>
 );
