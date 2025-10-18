@@ -4,25 +4,29 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { PiFacebookLogoBold } from "react-icons/pi";
 import { VscGithub } from "react-icons/vsc";
 import axios from "axios";
+import { useState } from "react";
 
 import type { IconType } from "react-icons";
-import { useState } from "react";
 
 export default function Contact() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:9898/contact", {
+      await axios.post("http://localhost:9898/contact", {
         name,
         email,
         message,
       });
-      console.log("Server response:", response.data);
+      setModalMessage("Your message was sent successfully!");
+      setIsModalOpen(true);
     } catch (error) {
-      console.error("Error sending message:", error);
+      setModalMessage("Failed to send your message. Please try again.");
+      setIsModalOpen(true);
     }
   };
 
@@ -107,6 +111,21 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Notification</h3>
+            <p className="py-4">{modalMessage}</p>
+            <div className="modal-action">
+              <button className="btn" onClick={() => setIsModalOpen(false)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

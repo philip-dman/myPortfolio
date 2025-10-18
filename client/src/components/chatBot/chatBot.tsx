@@ -1,31 +1,57 @@
-import "../../index.css";
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { RiChatAiFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import "../../index.css";
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
+    []
+  );
   const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const toggleChatBox = () => {
     setIsOpen(!isOpen);
+
+    // Scroll to the last message when reopening the chat
+    if (!isOpen && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputValue.trim() !== "") {
-      setMessages([...messages, inputValue]);
+      const userMessage = { sender: "user", text: inputValue };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
       setInputValue("");
+
+      try {
+        const response = await axios.post("http://localhost:9898/chatbot", {
+          message: inputValue,
+        });
+
+        const botMessage = { sender: "bot", text: response.data.output };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      } catch (error) {
+        console.error("Error communicating with the server:", error);
+        const errorMessage = {
+          sender: "bot",
+          text: "Sorry, I couldn't process your message.",
+        };
+        setMessages((prevMessages) => [...prevMessages, errorMessage]);
+      }
     }
   };
 
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (isOpen && messagesEndRef.current) {
+      // Scroll to the last message when the chat is opened
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [isOpen, messages]);
 
   return (
     <div>
@@ -33,36 +59,51 @@ export default function ChatBot() {
       <motion.div
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.8 }}
-        className="fixed bottom-5 right-5 bg-neutral-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-50"
+        animate={{
+          scale: [1],
+          rotate: [-50, 30, -15, 40, -15, 5, 0],
+          transition: { duration: 1.5, repeat: Infinity, repeatDelay: 3 },
+        }}
+        className="fixed bottom-5 right-5 bg-blue-500 text-white w-18 h-18 rounded-full flex items-center justify-center shadow-lg cursor-pointer z-50"
         onClick={toggleChatBox}
       >
-        <RiChatAiFill className="text-3xl" />
+        <RiChatAiFill className="text-4xl" />
       </motion.div>
 
       {/* Chat Box */}
       {isOpen && (
         <motion.div
-          className="fixed bottom-20 right-5 bg-base-200 w-80 h-96 rounded-lg shadow-2xl z-50 flex flex-col"
+          className="fixed md:bottom-25 md:right-5 bottom-0 right-0 backdrop-blur-md bg-opacity-70 md:w-100 md:h-3/4 w-full h-full rounded-lg shadow-2xl z-50 flex flex-col"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="bg-neutral-600 text-white p-3 rounded-t-lg flex justify-between items-center">
-            <h3 className="text-lg font-bold">Ai ChatBot</h3>
+          <div className="backdrop-blur-md bg-opacity-70 text-white p-3 rounded-t-lg flex justify-between items-center">
+            <h3 className="text-lg font-bold">AI ChatBot</h3>
             <button
               className="text-white hover:text-gray-300"
               onClick={toggleChatBox}
             >
-              <IoClose className="text-lg" />
+              <IoClose className="text-3xl" />
             </button>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-2">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className="chat chat-end chat-bubble chat-bubble-primary place-self-end"
+                className={`chat ${
+                  message.sender === "user" ? "chat-end" : "chat-start"
+                }`}
               >
-                {message}
+                <div
+                  className={`chat-bubble ${
+                    message.sender === "user"
+                      ? "chat-bubble-primary text-right"
+                      : "chat-bubble-secondary bg-blue-500 text-left"
+                  }`}
+                >
+                  {message.text}
+                </div>
               </div>
             ))}
             <div ref={messagesEndRef} />
