@@ -14,7 +14,7 @@ export async function sendMessageToChatbot(message: string) {
     { expiresIn: "1h" }
   );
 
-  const response = await fetch(process.env.N8N_WEBHOOK_URL!, {
+  const response = await fetch(process.env.N8N_WEBHOOK_CHATBOT_URL!, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
