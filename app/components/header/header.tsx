@@ -59,7 +59,7 @@ export default function Header() {
     <div className="navbar bg-base-100 shadow-sm px-10 fixed top-0 left-0 w-full z-50">
       <div className="avatar">
         <div className="w-10 rounded-full">
-          <img src="/profIcon.jpg" />
+          <img src="/profIcon.png" />
         </div>
       </div>
 

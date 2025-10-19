@@ -111,7 +111,7 @@ export default function Hero() {
         </div>
 
         <img
-          src="/profIcon.jpg"
+          src="/profIcon.png"
           className="w-100 h-100 rounded-full object-cover shadow-2xl hidden md:block"
         />
       </div>
